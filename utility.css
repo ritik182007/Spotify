@@ -1,0 +1,19 @@
+.flex{
+    display: flex;
+}
+.justify-content{
+    justify-content: center;
+}
+.align-items{
+    align-items: center;
+}
+.bg-black{
+    background-color: black;
+    color: white;
+}
+.invert{
+    filter: invert(1);
+}
+.round{
+    border-radius: 0.5rem;
+}
