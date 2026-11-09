@@ -7,6 +7,7 @@
     <title>Spotify</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utility.css">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2">
 </head>
 
 <body>
@@ -78,9 +79,12 @@
             <div class="playbar">
                 <div class="songinfo"></div>
                 <div class="songbutton">
-                    <img src="assests/prev-svgrepo-com.svg">
-                    <img src="assests/play-svgrepo-com.svg">
-                    <img src="assests/next-svgrepo-com.svg">
+                    <div class="seekbar">
+                        <div class="circle"></div>
+                    </div>
+                    <img src="assests/prev-svgrepo-com.svg" id="prev">
+                    <img src="assests/play-svgrepo-com.svg" id="play">
+                    <img src="assests/next-svgrepo-com.svg" id="next">
                 </div>
                 <div class="songtime"></div>
             </div>

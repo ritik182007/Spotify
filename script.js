@@ -1,5 +1,5 @@
-console.log("Hello World");
 
+let currentsong = new Audio();
 async function getsongs() {
     // 1. Fetch using the direct directory URL
     let a = await fetch("http://127.0.0.1:3000/Spotify%20Clone/assests/Songs/");
@@ -25,7 +25,15 @@ async function getsongs() {
     return songs;
 }
 
+const play = (track) => {
+    currentsong.src = `http://127.0.0.1:3000/Spotify%20Clone/assests/Songs/${track}.mp3`
+
+    console.log("Songs/" + track)
+    currentsong.play()
+}
+
 async function main() {
+
     let songs = await getsongs();
     console.log("Working Song URLs:", songs);
 
@@ -47,12 +55,40 @@ async function main() {
         return;
     }
 
-    let audio = new Audio(songs[0]);
-    audio.play(songs[0])
+    // let audio = new Audio(songs[0]);
+    // audio.play(songs[0])
 
-    audio.addEventListener("loadeddata", () => {
-        let duration = audio.duration
-        console.log(duration)
+    // audio.addEventListener("loadeddata", () => {
+    //     let duration = audio.duration
+    //     console.log(duration)
+    // })
+
+    let sl = document.querySelector(".songlist").querySelectorAll("li")
+    for (let i = 0; i < sl.length; i++) {
+        let info = sl[i].querySelector(".info div")
+
+        sl[i].addEventListener("click", () => {
+            console.log("Playing:", info.innerText);
+            play(info.innerHTML.trim())
+        });
+    }
+    let playbtn = document.getElementById("play")
+    playbtn.addEventListener("click", () => {
+        if (currentsong.paused) {
+            playbtn.src = "assests/pause.svg"
+            currentsong.play()
+        }
+        else {
+            currentsong.pause()
+            playbtn.src = "assests/play-svgrepo-com.svg"
+        }
+    })
+    let x=document.querySelector(".songlist")
+    x.addEventListener("click",()=>{
+        playbtn.src="assests/pause.svg"
+    })
+    currentsong.addEventListener("ended",()=>{
+        playbtn.src="assests/play-svgrepo-com.svg"
     })
 }
 
